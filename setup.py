@@ -8,7 +8,7 @@ __version__ = "0.0.0"
 
 REPO_NAME = "churn-mlops"
 AUTHOR_USER_NAME = "deasadiqbal"
-SRC_REPO = "churn-mlops"
+SRC_REPO = "churn_mlops"
 AUTHOR_EMAIL = "asad95298@gmail.com"
 
 

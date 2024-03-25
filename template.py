@@ -2,7 +2,7 @@ import os
 from pathlib import Path 
 import logging
 
-project_name = "churn-mlops"
+project_name = "churn_mlops"
 
 list_of_files = [
     ".github/workflows/.gitkeep",
