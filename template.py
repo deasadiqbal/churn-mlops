@@ -19,12 +19,10 @@ list_of_files = [
     "config/config.yaml",
     "params.yaml",
     "schema.yaml",
-    "main.py",
     "app.py",
-    "Dockerfile",
     "requirements.txt",
     "setup.py",
-    "research/trials.ipynb",
+    "research/research.ipynb",
     "templates/index.html",
     "test.py"
 ]
