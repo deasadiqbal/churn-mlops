@@ -9,3 +9,14 @@ data_config:
 transformed_data_config:
   churn_train_data_path: data\transformed_data\churn_train_data.csv
   churn_test_data_path: data\transformed_data\churn_test_data.csv
+
+mlflow_config:
+  experiment_name: churn_prediction
+  run_name: random_forest
+  tracking_uri: http://10.0.0.1:5000
+
+random_forest:
+  max_depth: 20
+  n_estimators: 500
+
+model_dir: model\model.joblib
