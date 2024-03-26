@@ -2,7 +2,10 @@ data_config:
   external_data_path: data\external_data\train.csv
   raw_data_path: data\raw_data\train.csv
   model_var: ['churn','number_vmail_messages','total_day_calls','total_eve_minutes','total_eve_charge','total_intl_minutes','number_customer_service_calls']
-  train_test_split_ratio: 0.2
+  split_ratio: 0.2
   target: churn
   random_state: 42
-  new_train_data_path: data\raw_data\train.csv
+
+transformed_data_config:
+  churn_train_data_path: data\transformed_data\churn_train_data.csv
+  churn_test_data_path: data\transformed_data\churn_test_data.csv
