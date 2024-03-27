@@ -16,7 +16,8 @@ mlflow_config:
   mlflow_uri: https://dagshub.com/deasadiqbal/churn-mlops.mlflow
 
 random_forest:
-  max_depth: 20
-  n_estimators: 500
+  max_depth: 50
+  n_estimators: 1000
+  
 
 model_dir: model\model.joblib
