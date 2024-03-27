@@ -13,11 +13,12 @@ transformed_data_config:
 mlflow_config:
   experiment_name: churn_prediction
   run_name: random_forest
-  mlflow_uri: https://dagshub.com/deasadiqbal/churn-mlops.mlflow
+  registered_model_name: random_forest
+  mlflow_tracking_uri: https://dagshub.com/deasadiqbal/churn-mlops.mlflow
 
 random_forest:
-  max_depth: 50
+  max_depth: 20
   n_estimators: 1000
-  
+
 
 model_dir: model\model.joblib

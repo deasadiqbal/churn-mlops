@@ -57,7 +57,7 @@ def train_and_evaluate(config_path):
     random_forest_model.fit(x_train, y_train)
     
 
-    mlflow.set_tracking_uri(config.mlflow_config.mlflow_uri)
+    mlflow.set_tracking_uri(config.mlflow_config.mlflow_tracking_uri)
     tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
 
     with mlflow.start_run(run_name=config.mlflow_config.experiment_name):
@@ -74,9 +74,9 @@ def train_and_evaluate(config_path):
         mlflow.log_metric("f1_score", f1)
 
         if tracking_url_type_store != "file":
-                mlflow.sklearn.log_model(random_forest_model, "model", registered_model_name="RandomForestModel")
+                mlflow.sklearn.log_model(random_forest_model, "model", registered_model_name=config.mlflow_config.registered_model_name)
         else:
-            mlflow.sklearn.log_model(random_forest_model, "model")
+            mlflow.sklearn.load_model(random_forest_model, "model")
 
 if __name__ == "__main__":
     train_and_evaluate(CONFIG_FILE_PATH)
