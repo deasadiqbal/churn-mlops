@@ -1,0 +1,33 @@
+stages:
+  load_data:
+    cmd: python src\churn_mlops\components\01_load_data.py
+    deps: 
+      - src\churn_mlops\components\01_load_data.py
+      - data/external_data/train.csv
+    outs:
+      - data/raw_data/train.csv
+
+  transform_data:
+    cmd: python src/churn_mlops/components/02_transformed_data.py
+    deps: 
+      - src/churn_mlops/components/02_transformed_data.py
+      - data/raw_data/train.csv
+    outs:
+      - data/transformed_data/churn_train_data.csv
+      - data/transformed_data/churn_test_data.csv
+
+  train_model:
+    cmd: python src/churn_mlops/components/03_train_model.py
+    deps: 
+      - src/churn_mlops/components/03_train_model.py
+      - data/transformed_data/churn_train_data.csv
+      - data/transformed_data/churn_test_data.csv
+      - config/config.yaml
+
+  log_production_model:
+    cmd: python src/churn_mlops/components/04_log_production_model.py
+    deps: 
+      - src/churn_mlops/components/04_log_production_model.py
+      - config/config.yaml
+    outs:
+      - model/model.joblib

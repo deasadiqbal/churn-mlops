@@ -1,0 +1,59 @@
+schema: '2.0'
+stages:
+  load_data:
+    cmd: python src\churn_mlops\components\01_load_data.py
+    deps:
+    - path: data/external_data/train.csv
+      md5: 8929517566f004183dff480fdd48afe0
+      size: 391872
+    - path: src\churn_mlops\components\01_load_data.py
+      md5: 780ed3f38684fcd6f654c131d8f1ec59
+      size: 659
+    outs:
+    - path: data/raw_data/train.csv
+      md5: 9b61c38a459d36244dbf8e6940236371
+      size: 120397
+  transform_data:
+    cmd: python src/churn_mlops/components/02_transformed_data.py
+    deps:
+    - path: data/raw_data/train.csv
+      md5: 9b61c38a459d36244dbf8e6940236371
+      size: 120397
+    - path: src/churn_mlops/components/02_transformed_data.py
+      md5: daff33a4c5be5dc4b4447fd17b058d5d
+      size: 1244
+    outs:
+    - path: data/transformed_data/churn_test_data.csv
+      md5: 6fea83d8fbf30e95648171258524da52
+      size: 24178
+    - path: data/transformed_data/churn_train_data.csv
+      md5: fdab66bb1817547cb3778d0deb844ef1
+      size: 96348
+  train_model:
+    cmd: python src/churn_mlops/components/03_train_model.py
+    deps:
+    - path: config/config.yaml
+      md5: b5a7a7cf2e1157e5440a5a1ef24c206c
+      size: 774
+    - path: data/transformed_data/churn_test_data.csv
+      md5: 6fea83d8fbf30e95648171258524da52
+      size: 24178
+    - path: data/transformed_data/churn_train_data.csv
+      md5: fdab66bb1817547cb3778d0deb844ef1
+      size: 96348
+    - path: src/churn_mlops/components/03_train_model.py
+      md5: 5ba25513d987632008d3d5ac71827b1f
+      size: 3073
+  log_production_model:
+    cmd: python src/churn_mlops/components/04_log_production_model.py
+    deps:
+    - path: config/config.yaml
+      md5: b5a7a7cf2e1157e5440a5a1ef24c206c
+      size: 774
+    - path: src/churn_mlops/components/04_log_production_model.py
+      md5: ec9a2b2503c6f7156a784e9cf1176a19
+      size: 1873
+    outs:
+    - path: model/model.joblib
+      md5: 38518685788a0434eff6a78e09f798ee
+      size: 12466898
