@@ -1,6 +1,7 @@
 data_config:
   external_data_path: data\external_data\train.csv
   raw_data_path: data\raw_data\train.csv
+  new_data_path: data/raw_data/train_new.csv
   model_var: ['churn','number_vmail_messages','total_day_calls','total_eve_minutes','total_eve_charge','total_intl_minutes','number_customer_service_calls']
   split_ratio: 0.2
   target: churn
@@ -20,5 +21,8 @@ random_forest:
   max_depth: 20
   n_estimators: 1000
 
-
 model_dir: model\model.joblib
+
+model_monitor:
+  target_col_name: target
+  dashboard_path: reports\data_drift_dashboard.html
