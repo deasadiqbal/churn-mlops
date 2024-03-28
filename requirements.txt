@@ -1,2 +1,13 @@
 # local package
 -e .
+# External package
+pandas
+numpy
+scikit-learn
+mlflow
+dvc
+python-box
+pyYAML
+joblib
+Flask
+Flask-Cors
